@@ -1,0 +1,73 @@
+:root {
+  --ink: #1c1a2b;
+  --body: #5d5a73;
+  --muted: #6b6882;
+  --faint: #8d89a3;
+  --inactive: #9a97ad;
+  --bg: #f5f4f9;
+  --card: #ffffff;
+  --hairline: rgba(28, 26, 43, 0.07);
+  --lavender: #7b6ff0;
+  --lavender-text: #5a4fc4;
+  --blue: #3f6fd1;
+  --blue-light: #5a8ef0;
+  --pink: #b8467f;
+  --pink-light: #e27bb4;
+  --green: #2f8f5b;
+  --logo-gradient: linear-gradient(135deg, #e27bb4, #7b6ff0 55%, #5a8ef0);
+  --shadow-card: 0 1px 2px rgba(28, 26, 43, 0.04), 0 24px 60px rgba(90, 70, 180, 0.07);
+  --shadow-glass: 0 20px 50px rgba(60, 40, 140, 0.18);
+  --shadow-white-btn: 0 6px 20px rgba(40, 30, 110, 0.2);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--lavender-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+section {
+  scroll-margin-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

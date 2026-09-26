@@ -1,0 +1,99 @@
+.approach {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  padding: clamp(64px, 8vw, 110px) clamp(18px, 4vw, 48px);
+  background:
+    radial-gradient(40% 40% at 5% 95%, oklch(0.84 0.1 350 / 0.9), transparent 70%),
+    radial-gradient(40% 45% at 100% 90%, oklch(0.82 0.1 330 / 0.8), transparent 70%),
+    linear-gradient(180deg, oklch(0.8 0.08 262), oklch(0.86 0.06 280) 70%, oklch(0.9 0.05 300));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0;
+}
+
+.h2 {
+  font: 300 clamp(32px, 4.4vw, 54px) / 1.08 var(--font-sans);
+  letter-spacing: -0.03em;
+  color: #fff;
+  max-width: 760px;
+  text-wrap: balance;
+}
+
+.em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.glass {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+  padding: 12px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 30px 70px rgba(60, 40, 140, 0.18);
+}
+
+.quoteCard {
+  border-radius: 18px;
+  background: #fff;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.brand {
+  font: 500 11px/1 var(--font-mono);
+  color: var(--lavender-text);
+}
+
+.quote {
+  font: 300 clamp(26px, 2.8vw, 34px) / 1.12 var(--font-sans);
+  letter-spacing: -0.025em;
+}
+
+.faint {
+  color: var(--faint);
+}
+
+.textCard {
+  border-radius: 18px;
+  background: #fff;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font: 400 14px/1.65 var(--font-sans);
+  color: var(--body);
+  text-wrap: pretty;
+}
+
+.lead {
+  font: 400 17px/1.45 var(--font-sans);
+  color: var(--ink);
+}

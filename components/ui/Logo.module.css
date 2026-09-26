@@ -1,0 +1,16 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.footer {
+  display: block;
+  height: 40px;
+  width: auto;
+}

@@ -1,0 +1,48 @@
+.button {
+  display: inline-block;
+  border-radius: 12px;
+  font: 500 14px/1 var(--font-sans);
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.md {
+  padding: 12px 20px;
+}
+
+.sm {
+  padding: 11px 18px;
+  font-size: 13px;
+}
+
+.light {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-white-btn);
+}
+
+.light:hover {
+  color: var(--lavender-text);
+}
+
+.dark {
+  --hover-bg: var(--lavender-text);
+  background: var(--ink);
+  color: #fff;
+}
+
+.dark:hover {
+  background: var(--hover-bg);
+  color: #fff;
+}
+
+.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.ghost:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}

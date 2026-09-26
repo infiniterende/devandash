@@ -1,0 +1,112 @@
+.contact {
+  position: relative;
+  padding: clamp(90px, 11vw, 150px) clamp(16px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 26px;
+}
+
+.pill {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #fff;
+  font: 500 11px/1 var(--font-mono);
+  box-shadow: 0 8px 24px rgba(90, 70, 180, 0.1);
+  animation: float 6s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+.pillDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.pillWeb {
+  left: 7%;
+  top: 12%;
+  animation-duration: 6s;
+}
+
+.pillProduct {
+  right: 10%;
+  top: 18%;
+  animation-duration: 7s;
+  animation-delay: 0.8s;
+}
+
+.pillDev {
+  left: 14%;
+  bottom: 20%;
+  animation-duration: 6.5s;
+  animation-delay: 1.4s;
+}
+
+.pillAi {
+  right: 13%;
+  bottom: 26%;
+  animation-duration: 7.5s;
+  animation-delay: 0.3s;
+}
+
+.tag,
+.h2,
+.lines,
+.cta {
+  position: relative;
+}
+
+.h2 {
+  font: 300 clamp(40px, 5.6vw, 72px) / 1.02 var(--font-sans);
+  letter-spacing: -0.035em;
+  max-width: 760px;
+  text-wrap: balance;
+}
+
+.lines {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font: 400 15px/1.55 var(--font-sans);
+  color: var(--muted);
+}
+
+.emphasis {
+  margin-top: 10px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.cta {
+  padding: 13px 22px;
+  box-shadow: 0 10px 26px rgba(28, 26, 43, 0.2);
+}
+
+@media (max-width: 719px) {
+  .pill {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    animation: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

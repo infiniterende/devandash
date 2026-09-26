@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f4f9;color:#1c1a2b;font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#5a4fc4;text-decoration:none}a:hover{color:#1c1a2b}
+*{box-sizing:border-box}
+h1,h2,h3,h4,p{margin:0}
+@keyframes dd-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes dd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</helmet>
+<div style="max-width:1320px;margin:0 auto;padding:16px 16px 0;display:flex;flex-direction:column;gap:0">
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="position:relative;border-radius:32px;overflow:hidden;background:radial-gradient(45% 45% at 8% 88%, oklch(0.82 0.12 350 / .95), transparent 70%), radial-gradient(40% 50% at 96% 78%, oklch(0.8 0.12 330 / .85), transparent 70%), radial-gradient(60% 55% at 50% 0%, oklch(0.7 0.12 268), transparent 75%), linear-gradient(180deg, oklch(0.74 0.1 268) 0%, oklch(0.84 0.08 295) 55%, #f5f4f9 100%);padding:22px clamp(18px,3vw,36px) 0">
+  <sc-if value="{{ showDots }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.6px);background-size:8px 8px;-webkit-mask-image:radial-gradient(38% 42% at 12% 70%, #000, transparent 70%), radial-gradient(34% 40% at 90% 60%, #000, transparent 70%);mask-image:radial-gradient(38% 42% at 12% 70%, #000, transparent 70%), radial-gradient(34% 40% at 90% 60%, #000, transparent 70%);opacity:.7"></div>
+  </sc-if>
+  <nav style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#fff;font:500 17px/1 'Geist';letter-spacing:-.01em">
+      <span style="flex:none;width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#e27bb4,#7b6ff0 55%,#5a8ef0);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(40,30,110,.25), inset 0 0 0 1px rgba(255,255,255,.25)"><img src="shots/logo-comet-white.png" alt="" style="width:28px;height:22px;object-fit:contain;filter:brightness(0) invert(1)"></span><span style="display:flex;align-items:baseline;letter-spacing:-.02em;font-weight:600;font-size:18px"><span style="color:#1c1a2b">dev&amp;</span><span style="color:#fff">dash</span></span>
+    </a>
+    <div style="display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(12px)">
+      <a href="#work" style="padding:7px 14px;border-radius:999px;font-size:13px;color:#fff;background:rgba(255,255,255,.22)" style-hover="background:rgba(255,255,255,.35);color:#fff">Work</a>
+      <a href="#services" style="padding:7px 14px;border-radius:999px;font-size:13px;color:rgba(255,255,255,.85)" style-hover="background:rgba(255,255,255,.22);color:#fff">Services</a>
+      <a href="#process" style="padding:7px 14px;border-radius:999px;font-size:13px;color:rgba(255,255,255,.85)" style-hover="background:rgba(255,255,255,.22);color:#fff">Process</a>
+      <a href="#contact" style="padding:7px 14px;border-radius:999px;font-size:13px;color:rgba(255,255,255,.85)" style-hover="background:rgba(255,255,255,.22);color:#fff">Contact</a>
+    </div>
+    <a href="#contact" style="padding:9px 16px;border-radius:10px;background:#fff;color:#1c1a2b;font:500 13px/1 'Geist';box-shadow:0 4px 14px rgba(40,30,110,.18)" style-hover="color:#5a4fc4">Start a Project</a>
+  </nav>
+
+  <div id="top" style="position:relative;max-width:820px;margin:0 auto;padding:clamp(56px,9vw,104px) 0 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff;font:500 11px/1 'Geist Mono';letter-spacing:.04em"><span style="width:5px;height:5px;border-radius:50%;background:#fff"></span>Strategy. Design. Development.</span>
+    <h1 style="font:300 clamp(40px,6.2vw,76px)/1.02 'Geist';letter-spacing:-.035em;color:#fff;text-wrap:balance">We design digital experiences people remember.</h1>
+    <p style="max-width:560px;font:400 16px/1.55 'Geist';color:rgba(255,255,255,.92);text-wrap:pretty">dev&amp;dash is an independent web design and development studio creating distinctive websites, digital products, and AI-powered experiences for ambitious brands, founders, and teams.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <a href="#contact" style="padding:12px 20px;border-radius:12px;background:#fff;color:#1c1a2b;font:500 14px/1 'Geist';box-shadow:0 6px 20px rgba(40,30,110,.2)" style-hover="color:#5a4fc4">Start a Project</a>
+      <a href="#work" style="padding:12px 20px;border-radius:12px;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);color:#fff;font:500 14px/1 'Geist'" style-hover="background:rgba(255,255,255,.25);color:#fff">Explore Our Work</a>
+    </div>
+  </div>
+
+  <div style="position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,2vw,24px);margin-top:64px;padding:0 4px;flex-wrap:nowrap">
+    <div style="position:absolute;left:14%;top:-18px;display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.85);font:500 11px/1 'Geist Mono';color:#c2417e;z-index:2"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.65 0.18 350)"></span>Design</div>
+    <div style="position:absolute;right:14%;top:-4px;display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.85);font:500 11px/1 'Geist Mono';color:#2f8f5b;z-index:2"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.68 0.15 155)"></span>Deployed</div>
+    <div style="flex:0 1 300px;min-width:0;transform:rotate(-6deg) translateY(28px);padding:8px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(60,40,140,.18)">
+      <div style="display:flex;justify-content:space-between;padding:6px 8px 10px;font:500 12px/1 'Geist'"><span>Steady</span><span style="font:400 10px/1 'Geist Mono';color:#6b6882">Productivity</span></div>
+      <div style="height:190px;border-radius:14px;overflow:hidden"><image-slot id="hero-steady" src="shots/steady-hero.png" shape="rounded" radius="14" placeholder="Steady — app screen"></image-slot></div>
+    </div>
+    <div style="flex:0 1 380px;min-width:0;padding:8px;border-radius:22px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(14px);box-shadow:0 24px 60px rgba(60,40,140,.22);z-index:1">
+      <div style="display:flex;justify-content:space-between;padding:6px 8px 10px;font:500 12px/1 'Geist'"><span>Agilance — AI Triage</span><span style="font:400 10px/1 'Geist Mono';color:#6b6882">Healthcare</span></div>
+      <div style="height:250px;border-radius:14px;overflow:hidden"><image-slot id="hero-agilance" src="shots/agilance-dashboard.png" fit="cover" shape="rounded" radius="14" placeholder="Agilance — clinician dashboard"></image-slot></div>
+    </div>
+    <div style="flex:0 1 300px;min-width:0;transform:rotate(6deg) translateY(28px);padding:8px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(60,40,140,.18)">
+      <div style="display:flex;justify-content:space-between;padding:6px 8px 10px;font:500 12px/1 'Geist'"><span>Mind &amp; Spirit</span><span style="font:400 10px/1 'Geist Mono';color:#6b6882">Editorial</span></div>
+      <div style="height:190px;border-radius:14px;overflow:hidden"><image-slot id="hero-mind" src="shots/mind-spirit.png" shape="rounded" radius="14" placeholder="Mind &amp; Spirit — article page"></image-slot></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg, transparent, #f5f4f9);pointer-events:none;z-index:2"></div>
+</section>
+
+<!-- INTRO -->
+<section style="padding:clamp(80px,10vw,130px) clamp(8px,4vw,40px) 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+  <p style="max-width:860px;font:400 clamp(22px,2.8vw,32px)/1.35 'Geist';letter-spacing:-.02em;text-wrap:balance">From the first sketch to the final deploy, we combine thoughtful design with serious engineering <span style="color:#8d89a3">to create digital experiences that look exceptional — and work beautifully.</span></p>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work" data-screen-label="Selected Work" style="padding:60px clamp(8px,3vw,32px) 40px;display:flex;flex-direction:column;gap:40px;scroll-margin-top:20px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:28px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.07);font:500 11px/1 'Geist Mono';color:#5a4fc4"><span style="width:5px;height:5px;border-radius:50%;background:#7b6ff0"></span>Selected Work</span>
+      <h2 style="font:300 clamp(34px,4.4vw,52px)/1.05 'Geist';letter-spacing:-.03em">Ideas, designed and built.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:460px;justify-self:end;font:400 14px/1.6 'Geist';color:#6b6882">
+      <p>We work across brand websites, consumer apps, editorial experiences, SaaS products, healthcare technology, and AI-powered platforms.</p>
+      <p>Every project begins with the same question: <strong style="color:#1c1a2b;font-weight:500">What should this experience feel like?</strong> Then we design and engineer everything around the answer.</p>
+    </div>
+  </div>
+
+  <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(24px,4vw,56px);align-items:center;padding:14px;border-radius:28px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 24px 60px rgba(90,70,180,.07)">
+    <div style="position:relative;aspect-ratio:4/3;border-radius:20px;padding:clamp(18px,3vw,36px);background:radial-gradient(70% 70% at 20% 90%, oklch(0.86 0.09 350), transparent 70%), radial-gradient(70% 70% at 90% 10%, oklch(0.8 0.1 275), transparent 70%), oklch(0.93 0.04 290)">
+      <div style="position:relative;width:100%;height:100%;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(60,40,140,.18)"><image-slot id="work-steady" src="shots/steady-home.png" shape="rounded" radius="14" placeholder="Steady — product shots"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(8px,2vw,24px) clamp(8px,2vw,32px) clamp(8px,2vw,24px) 0">
+      <span style="font:400 11px/1.5 'Geist Mono';color:#8d89a3;letter-spacing:.02em">Product Design · UX/UI · Full-Stack Development · Productivity</span>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font:400 clamp(30px,3.4vw,42px)/1 'Geist';letter-spacing:-.03em">Steady</h3>
+        <h4 style="font:300 20px/1.3 'Geist';color:#5a4fc4;letter-spacing:-.01em">A calmer way to get things done.</h4>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1.65 'Geist';color:#5d5a73;text-wrap:pretty">
+        <p>Steady is a productivity app designed around a simple idea: staying productive shouldn't feel overwhelming.</p>
+        <p>Instead of adding more noise to your day, Steady creates a focused space for organizing priorities, building better routines, and making consistent progress toward the things that matter.</p>
+        <p>The experience pairs a minimal interface with thoughtful productivity tools, turning planning from another task into a habit that feels natural.</p>
+      </div>
+      <a href="#" style="align-self:flex-start;padding:11px 18px;border-radius:12px;background:#1c1a2b;color:#fff;font:500 13px/1 'Geist'" style-hover="background:#5a4fc4;color:#fff">Explore Steady →</a>
+    </div>
+  </article>
+
+  <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(24px,4vw,56px);align-items:center;padding:14px;border-radius:28px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 24px 60px rgba(90,70,180,.07)">
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(8px,2vw,24px) 0 clamp(8px,2vw,24px) clamp(8px,2vw,32px)">
+      <span style="font:400 11px/1.5 'Geist Mono';color:#8d89a3;letter-spacing:.02em">Product Design · Full-Stack Development · AI · Healthcare</span>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font:400 clamp(30px,3.4vw,42px)/1 'Geist';letter-spacing:-.03em">Agilance — AI Triage</h3>
+        <h4 style="font:300 20px/1.3 'Geist';color:#3f6fd1;letter-spacing:-.01em">Turning conversations into actionable clinical insight.</h4>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1.65 'Geist';color:#5d5a73;text-wrap:pretty">
+        <p>An AI-powered healthcare platform designed to help patients communicate symptoms and help clinicians understand them faster.</p>
+        <p>Patients interact with an intelligent assistant through voice or text while the platform organizes symptoms, evaluates relevant risk factors, and transforms the conversation into structured clinical information.</p>
+        <p>A clinician dashboard brings those insights together through patient histories, symptom summaries, risk visualization, and clinical workflows.</p>
+      </div>
+      <a href="#" style="align-self:flex-start;padding:11px 18px;border-radius:12px;background:#1c1a2b;color:#fff;font:500 13px/1 'Geist'" style-hover="background:#3f6fd1;color:#fff">View Project →</a>
+    </div>
+    <div style="position:relative;aspect-ratio:4/3;border-radius:20px;padding:clamp(18px,3vw,36px);background:radial-gradient(70% 70% at 85% 90%, oklch(0.85 0.08 220), transparent 70%), radial-gradient(70% 70% at 10% 10%, oklch(0.78 0.11 260), transparent 70%), oklch(0.93 0.04 250)">
+      <div style="position:relative;width:100%;height:100%;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(40,60,140,.18)"><image-slot id="work-agilance" src="shots/agilance-hero.png" shape="rounded" radius="14" placeholder="Agilance — assistant + dashboard"></image-slot></div>
+    </div>
+  </article>
+
+  <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(24px,4vw,56px);align-items:center;padding:14px;border-radius:28px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 24px 60px rgba(90,70,180,.07)">
+    <div style="position:relative;aspect-ratio:4/3;border-radius:20px;padding:clamp(18px,3vw,36px);background:radial-gradient(70% 70% at 80% 85%, oklch(0.86 0.08 20), transparent 70%), radial-gradient(70% 70% at 15% 15%, oklch(0.84 0.09 320), transparent 70%), oklch(0.94 0.03 330)">
+      <div style="position:relative;width:100%;height:100%;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(140,40,100,.15)"><image-slot id="work-mind" src="shots/mind-spirit.png" shape="rounded" radius="14" placeholder="Mind &amp; Spirit — editorial spreads"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(8px,2vw,24px) clamp(8px,2vw,32px) clamp(8px,2vw,24px) 0">
+      <span style="font:400 11px/1.5 'Geist Mono';color:#8d89a3;letter-spacing:.02em">Editorial Design · Web Development · Creative Direction</span>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font:400 clamp(30px,3.4vw,42px)/1 'Geist';letter-spacing:-.03em">Mind &amp; Spirit</h3>
+        <h4 style="font:300 20px/1.3 'Geist';color:#b8467f;letter-spacing:-.01em">An editorial experience designed for slower reading.</h4>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1.65 'Geist';color:#5d5a73;text-wrap:pretty">
+        <p>A digital magazine exploring faith, mind, wellness, fiction, and art.</p>
+        <p>Mind &amp; Spirit brings the character of independent print publishing to the web through expressive typography, carefully structured storytelling, and an interface designed to make reading feel intentional again.</p>
+      </div>
+      <a href="#" style="align-self:flex-start;padding:11px 18px;border-radius:12px;background:#1c1a2b;color:#fff;font:500 13px/1 'Geist'" style-hover="background:#b8467f;color:#fff">View Project →</a>
+    </div>
+  </article>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="services" data-screen-label="What We Do" style="padding:100px clamp(8px,3vw,32px) 40px;display:flex;flex-direction:column;gap:40px;scroll-margin-top:20px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:28px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.07);font:500 11px/1 'Geist Mono';color:#5a4fc4"><span style="width:5px;height:5px;border-radius:50%;background:#7b6ff0"></span>What We Do</span>
+      <h2 style="font:300 clamp(30px,3.8vw,46px)/1.1 'Geist';letter-spacing:-.03em">Design that has a point of view.<br><span style="color:#8d89a3">Engineering that makes it real.</span></h2>
+    </div>
+    <p style="max-width:380px;justify-self:end;font:400 14px/1.6 'Geist';color:#6b6882">dev&amp;dash works across the entire digital product lifecycle — from the first idea to production.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+    <div style="display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 18px 44px rgba(90,70,180,.06)">
+      <div style="height:150px;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(80% 80% at 90% 100%, oklch(0.86 0.09 350), transparent 70%), oklch(0.9 0.05 300)"><span style="font:500 11px/1 'Geist Mono';color:#5a4fc4">01</span><h3 style="font:400 24px/1 'Geist';letter-spacing:-.02em">Web Design</h3></div>
+      <div style="padding:18px 10px 12px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 14px/1.55 'Geist';color:#5d5a73">Distinctive digital experiences built around your brand rather than a template.</p>
+        <div style="display:flex;flex-direction:column;font:400 12px/1 'Geist Mono';color:#1c1a2b"><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Brand websites</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Editorial experiences</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Landing pages</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Portfolio websites</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Responsive design</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Design systems</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 18px 44px rgba(90,70,180,.06)">
+      <div style="height:150px;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(80% 80% at 90% 100%, oklch(0.86 0.07 230), transparent 70%), oklch(0.88 0.06 275)"><span style="font:500 11px/1 'Geist Mono';color:#5a4fc4">02</span><h3 style="font:400 24px/1 'Geist';letter-spacing:-.02em">Product Design</h3></div>
+      <div style="padding:18px 10px 12px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 14px/1.55 'Geist';color:#5d5a73">We turn complicated ideas into interfaces that feel simple.</p>
+        <div style="display:flex;flex-direction:column;font:400 12px/1 'Geist Mono';color:#1c1a2b"><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">UX strategy</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Information architecture</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">User flows</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Wireframes</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Prototypes</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Product interfaces</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Design systems</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 18px 44px rgba(90,70,180,.06)">
+      <div style="height:150px;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(80% 80% at 90% 100%, oklch(0.85 0.07 200), transparent 70%), oklch(0.87 0.06 250)"><span style="font:500 11px/1 'Geist Mono';color:#3f6fd1">03</span><h3 style="font:400 24px/1 'Geist';letter-spacing:-.02em">Development</h3></div>
+      <div style="padding:18px 10px 12px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 14px/1.55 'Geist';color:#5d5a73">Production-ready applications built with modern technology.</p>
+        <div style="display:flex;flex-direction:column;font:400 12px/1 'Geist Mono';color:#1c1a2b"><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">React &amp; Next.js</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">TypeScript</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Python</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">APIs &amp; backend systems</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Databases</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Authentication</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Cloud infrastructure</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;padding:10px;border-radius:24px;background:#fff;box-shadow:0 1px 2px rgba(28,26,43,.04), 0 18px 44px rgba(90,70,180,.06)">
+      <div style="height:150px;border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(80% 80% at 90% 100%, oklch(0.87 0.08 10), transparent 70%), oklch(0.89 0.06 320)"><span style="font:500 11px/1 'Geist Mono';color:#b8467f">04</span><h3 style="font:400 24px/1 'Geist';letter-spacing:-.02em">AI Experiences</h3></div>
+      <div style="padding:18px 10px 12px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 14px/1.55 'Geist';color:#5d5a73">AI should feel like part of the experience — not something pasted on top of it.</p>
+        <div style="display:flex;flex-direction:column;font:400 12px/1 'Geist Mono';color:#1c1a2b"><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Conversational AI</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Voice experiences</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">AI assistants</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">LLM applications</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">Intelligent workflows</span><span style="padding:9px 0;border-top:1px solid rgba(28,26,43,.07)">AI-powered interfaces</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" data-screen-label="Process" style="padding:100px clamp(8px,3vw,32px) 60px;display:flex;flex-direction:column;gap:40px;scroll-margin-top:20px">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.07);font:500 11px/1 'Geist Mono';color:#5a4fc4"><span style="width:5px;height:5px;border-radius:50%;background:#7b6ff0"></span>Process</span>
+    <h2 style="font:300 clamp(30px,3.8vw,46px)/1.1 'Geist';letter-spacing:-.03em">From idea → interface → production.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,56px);align-items:stretch">
+    <div style="display:flex;flex-direction:column;gap:2px;max-width:320px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <button onClick="{{ s.select }}" style="all:unset;cursor:pointer;display:flex;align-items:baseline;gap:14px;padding:14px 18px;border-left:2px solid {{ s.bar }};color:{{ s.color }};font:400 16px/1.2 'Geist'" style-hover="color:#1c1a2b"><span style="font:500 11px/1 'Geist Mono'">{{ s.num }}</span>{{ s.name }}</button>
+      </sc-for>
+    </div>
+    <div style="grid-column:span 2;min-width:min(100%,300px);position:relative;border-radius:28px;padding:clamp(24px,4vw,48px);min-height:340px;overflow:hidden;background:radial-gradient(50% 60% at 100% 100%, oklch(0.86 0.08 345 / .8), transparent 70%), radial-gradient(60% 70% at 0% 0%, oklch(0.84 0.07 270), transparent 70%), #eeecf7;display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+      <sc-if value="{{ showDots }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.6px);background-size:8px 8px;-webkit-mask-image:radial-gradient(40% 50% at 95% 90%, #000, transparent 70%);mask-image:radial-gradient(40% 50% at 95% 90%, #000, transparent 70%)"></div></sc-if>
+      <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <span style="font:300 clamp(72px,10vw,128px)/.8 'Geist';letter-spacing:-.05em;color:rgba(255,255,255,.95)">{{ active.num }}</span>
+        <div style="display:flex;gap:6px"><sc-for list="{{ steps }}" as="s" hint-placeholder-count="4"><span style="width:{{ s.pip }};height:6px;border-radius:3px;background:{{ s.pipBg }};transition:width .3s"></span></sc-for></div>
+      </div>
+      <div style="position:relative;max-width:560px;padding:24px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(14px);display:flex;flex-direction:column;gap:10px;box-shadow:0 18px 40px rgba(60,40,140,.1)">
+        <span style="font:500 11px/1 'Geist Mono';color:#5a4fc4">{{ active.num }} — {{ active.name }}</span>
+        <h3 style="font:400 24px/1.2 'Geist';letter-spacing:-.02em">{{ active.lead }}</h3>
+        <p style="font:400 14px/1.65 'Geist';color:#5d5a73;text-wrap:pretty">{{ active.body }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT JUST PRETTY -->
+<section data-screen-label="Approach" style="position:relative;border-radius:32px;overflow:hidden;padding:clamp(64px,8vw,110px) clamp(18px,4vw,48px);background:radial-gradient(40% 40% at 5% 95%, oklch(0.84 0.1 350 / .9), transparent 70%), radial-gradient(40% 45% at 100% 90%, oklch(0.82 0.1 330 / .8), transparent 70%), linear-gradient(180deg, oklch(0.8 0.08 262), oklch(0.86 0.06 280) 70%, oklch(0.9 0.05 300));display:flex;flex-direction:column;align-items:center;gap:44px">
+  <sc-if value="{{ showDots }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.6px);background-size:8px 8px;-webkit-mask-image:radial-gradient(30% 40% at 8% 85%, #000, transparent 70%), radial-gradient(30% 40% at 95% 20%, #000, transparent 70%);mask-image:radial-gradient(30% 40% at 8% 85%, #000, transparent 70%), radial-gradient(30% 40% at 95% 20%, #000, transparent 70%);opacity:.8"></div></sc-if>
+  <div style="position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px">
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.45);color:#fff;font:500 11px/1 'Geist Mono'"><span style="width:5px;height:5px;border-radius:50%;background:#fff"></span>Not just pretty websites.</span>
+    <h2 style="font:300 clamp(32px,4.4vw,54px)/1.08 'Geist';letter-spacing:-.03em;color:#fff;max-width:760px;text-wrap:balance">Digital products should be beautiful <em style="font-style:italic;font-weight:300">and</em> useful.</h2>
+  </div>
+  <div style="position:relative;width:100%;max-width:960px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;padding:12px;border-radius:26px;background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(16px);box-shadow:0 30px 70px rgba(60,40,140,.18)">
+    <div style="border-radius:18px;background:#fff;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+      <span style="font:500 11px/1 'Geist Mono';color:#5a4fc4">dev&amp;dash</span>
+      <p style="font:300 clamp(26px,2.8vw,34px)/1.12 'Geist';letter-spacing:-.025em">Beautiful on the surface. <span style="color:#8d89a3">Solid underneath.</span></p>
+    </div>
+    <div style="border-radius:18px;background:#fff;padding:28px;display:flex;flex-direction:column;gap:12px;font:400 14px/1.65 'Geist';color:#5d5a73;text-wrap:pretty">
+      <p style="font:400 17px/1.45 'Geist';color:#1c1a2b">Great design isn't decoration.</p>
+      <p>It's understanding what someone needs, removing everything that gets in their way, and creating an experience that feels almost inevitable.</p>
+      <p>That's why dev&amp;dash brings design and engineering together.</p>
+      <p>We obsess over the details people see — typography, spacing, motion, hierarchy, and interaction — while engineering the systems they don't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PRODUCTS -->
+<section data-screen-label="One Approach" style="padding:clamp(90px,10vw,130px) clamp(8px,3vw,32px) 60px;display:flex;flex-direction:column;align-items:center;gap:48px;text-align:center">
+  <h2 style="font:300 clamp(30px,3.8vw,46px)/1.1 'Geist';letter-spacing:-.03em">Three very different products.<br><span style="color:#8d89a3">One approach.</span></h2>
+  <div style="width:100%;max-width:1040px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+    <div style="padding:28px 24px;border-radius:22px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 18px 44px rgba(90,70,180,.06)"><span style="width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, oklch(0.88 0.07 300), oklch(0.72 0.12 280))"></span><h3 style="font:500 18px/1 'Geist';letter-spacing:-.01em">Steady</h3><p style="font:400 14px/1.4 'Geist';color:#6b6882">Productivity made calmer.</p></div>
+    <div style="padding:28px 24px;border-radius:22px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 18px 44px rgba(90,70,180,.06)"><span style="width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, oklch(0.88 0.07 230), oklch(0.72 0.12 255))"></span><h3 style="font:500 18px/1 'Geist';letter-spacing:-.01em">Agilance</h3><p style="font:400 14px/1.4 'Geist';color:#6b6882">Healthcare made more intelligent.</p></div>
+    <div style="padding:28px 24px;border-radius:22px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 18px 44px rgba(90,70,180,.06)"><span style="width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, oklch(0.9 0.06 10), oklch(0.72 0.12 345))"></span><h3 style="font:500 18px/1 'Geist';letter-spacing:-.01em">Mind &amp; Spirit</h3><p style="font:400 14px/1.4 'Geist';color:#6b6882">Digital publishing made more intentional.</p></div>
+  </div>
+  <div style="max-width:560px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.55 'Geist';color:#6b6882">
+    <p>Different industries. Different users. Different problems.</p>
+    <p style="color:#1c1a2b">The same obsession with creating thoughtful digital experiences.</p>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section data-screen-label="Capabilities" style="padding:40px 0 60px;display:flex;flex-direction:column;align-items:center;gap:26px;overflow:hidden">
+  <span style="display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.07);font:500 11px/1 'Geist Mono';color:#5a4fc4"><span style="width:5px;height:5px;border-radius:50%;background:#7b6ff0"></span>Selected Capabilities</span>
+  <div style="width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)">
+    <div style="display:flex;gap:10px;width:max-content;animation:dd-marquee 60s linear infinite;animation-play-state:{{ marqueeState }}">
+      <sc-for list="{{ capsLoop }}" as="c" hint-placeholder-count="16">
+        <span style="flex:none;padding:12px 18px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.06);font:400 15px/1 'Geist';white-space:nowrap;box-shadow:0 6px 18px rgba(90,70,180,.05)">{{ c }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" data-screen-label="Contact" style="position:relative;padding:clamp(90px,11vw,150px) clamp(16px,4vw,40px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;scroll-margin-top:20px">
+  <sc-if value="{{ showDots }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle, rgba(123,111,240,.35) 1px, transparent 1.6px);background-size:9px 9px;-webkit-mask-image:radial-gradient(50% 45% at 50% 50%, #000, transparent 75%);mask-image:radial-gradient(50% 45% at 50% 50%, #000, transparent 75%);opacity:.5"></div></sc-if>
+  <div style="position:absolute;left:7%;top:12%;display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:#fff;font:500 11px/1 'Geist Mono';color:#5a4fc4;box-shadow:0 8px 24px rgba(90,70,180,.1);animation:dd-float 6s ease-in-out infinite"><span style="width:6px;height:6px;border-radius:50%;background:#7b6ff0"></span>Web Design</div>
+  <div style="position:absolute;right:10%;top:18%;display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:#fff;font:500 11px/1 'Geist Mono';color:#b8467f;box-shadow:0 8px 24px rgba(90,70,180,.1);animation:dd-float 7s ease-in-out infinite .8s"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.65 0.18 350)"></span>Product Design</div>
+  <div style="position:absolute;left:14%;bottom:20%;display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:#fff;font:500 11px/1 'Geist Mono';color:#3f6fd1;box-shadow:0 8px 24px rgba(90,70,180,.1);animation:dd-float 6.5s ease-in-out infinite 1.4s"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.65 0.14 255)"></span>Development</div>
+  <div style="position:absolute;right:13%;bottom:26%;display:flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:#fff;font:500 11px/1 'Geist Mono';color:#2f8f5b;box-shadow:0 8px 24px rgba(90,70,180,.1);animation:dd-float 7.5s ease-in-out infinite .3s"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.68 0.15 155)"></span>AI</div>
+  <span style="position:relative;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,43,.07);font:500 11px/1 'Geist Mono';color:#5a4fc4"><span style="width:5px;height:5px;border-radius:50%;background:#7b6ff0"></span>Have an idea?</span>
+  <h2 style="position:relative;font:300 clamp(40px,5.6vw,72px)/1.02 'Geist';letter-spacing:-.035em;max-width:760px;text-wrap:balance">Let's make something worth clicking on.</h2>
+  <div style="position:relative;max-width:480px;display:flex;flex-direction:column;gap:6px;font:400 15px/1.55 'Geist';color:#6b6882">
+    <p>Maybe it's a new company.</p>
+    <p>Maybe it's an app you've been thinking about for months.</p>
+    <p>Maybe your current website simply doesn't feel like your brand anymore.</p>
+    <p>Or maybe it's something that hasn't quite existed before.</p>
+    <p style="margin-top:10px;color:#1c1a2b;font-weight:500">That's the interesting part.</p>
+    <p>Tell us what you're building.</p>
+  </div>
+  <a href="mailto:" style="position:relative;padding:13px 22px;border-radius:12px;background:#1c1a2b;color:#fff;font:500 14px/1 'Geist';box-shadow:0 10px 26px rgba(28,26,43,.2)" style-hover="background:#5a4fc4;color:#fff">Start a Project →</a>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(28,26,43,.08);padding:48px clamp(8px,3vw,32px) 28px;display:flex;flex-direction:column;gap:48px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="display:flex;align-items:center;gap:10px;font:500 17px/1 'Geist';letter-spacing:-.01em"><img src="shots/logo-comet-black.png" alt="" style="flex:none;width:38px;height:30px;object-fit:contain;display:block"><span style="display:flex;align-items:baseline;letter-spacing:-.02em;font-weight:600;background:linear-gradient(90deg,#e27bb4,#7b6ff0 50%,#5a8ef0);-webkit-background-clip:text;background-clip:text;color:transparent">dev&amp;dash</span></span>
+      <p style="font:400 14px/1.5 'Geist';color:#6b6882">Independent web design &amp; development studio.</p>
+    </div>
+    <p style="font:300 clamp(22px,2.4vw,30px)/1.15 'Geist';letter-spacing:-.02em;justify-self:end;max-width:460px;text-align:right">Design thoughtfully. Build boldly. <span style="color:#7b6ff0">Ship beautifully.</span></p>
+  </div>
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(28,26,43,.06);font:400 12px/1 'Geist Mono';color:#8d89a3">
+    <span>Web Design · Product Design · Development · AI</span>
+    <span>© 2026 dev&amp;dash</span>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;autoplayProcess&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animateCapabilities&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { step: 0 };
+  steps = [
+    { num: '01', name: 'Discover', lead: 'We start with the problem.', body: "We learn about your users, your brand, your goals, and what you're trying to build before deciding what the solution should look like." },
+    { num: '02', name: 'Design', lead: 'We transform the idea into an experience.', body: 'Information architecture, visual direction, typography, interfaces, interactions, and prototypes come together into a cohesive product.' },
+    { num: '03', name: 'Build', lead: 'Then we make it real.', body: 'We turn the design into responsive, performant, maintainable software using modern web technologies.' },
+    { num: '04', name: 'Launch', lead: 'Finally, we obsess over the details.', body: 'Testing, performance, responsiveness, deployment, and refinement turn the project from a prototype into something people can actually use.' }
+  ];
+  caps = ['Web Design','Product Design','UI & UX','Creative Development','Full-Stack Development','React','Next.js','TypeScript','Python','AI & LLM Applications','Voice AI','SaaS','APIs','Dashboards','Design Systems','Cloud Deployment'];
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      if ((this.props.autoplayProcess ?? true) && !this.paused) this.setState(s => ({ step: (s.step + 1) % 4 }));
+    }, 5000);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  renderVals() {
+    const cur = this.state.step;
+    return {
+      showDots: this.props.showDots ?? true,
+      marqueeState: (this.props.animateCapabilities ?? true) ? 'running' : 'paused',
+      capsLoop: [...this.caps, ...this.caps],
+      active: this.steps[cur],
+      steps: this.steps.map((s, i) => ({
+        ...s,
+        bar: i === cur ? '#7b6ff0' : 'rgba(28,26,43,.08)',
+        color: i === cur ? '#1c1a2b' : '#9a97ad',
+        pip: i === cur ? '22px' : '6px',
+        pipBg: i === cur ? '#fff' : 'rgba(255,255,255,.55)',
+        select: () => { this.paused = true; this.setState({ step: i }); }
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

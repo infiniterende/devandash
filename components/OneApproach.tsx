@@ -16,13 +16,18 @@ const PRODUCTS = [
     line: "Digital publishing made more intentional.",
     orb: "radial-gradient(circle at 30% 30%, oklch(0.9 0.06 10), oklch(0.72 0.12 345))",
   },
+  {
+    name: "Catalysis",
+    line: "Faith made a daily habit.",
+    orb: "radial-gradient(circle at 30% 30%, oklch(0.9 0.08 80), oklch(0.72 0.15 35))",
+  },
 ];
 
 export default function OneApproach() {
   return (
     <section className={styles.section} aria-label="One approach">
       <h2 className={styles.h2}>
-        Three very different products.
+        Four very different products.
         <br />
         <span className={styles.faint}>One approach.</span>
       </h2>

@@ -79,15 +79,15 @@ export default function Hero() {
 
         <div className={`${styles.card} ${styles.cardSide} ${styles.cardRight}`}>
           <div className={styles.cardHead}>
-            <span>Mind &amp; Spirit</span>
-            <span className={styles.cardMeta}>Editorial</span>
+            <span>Catalysis</span>
+            <span className={styles.cardMeta}>Faith</span>
           </div>
           <div className={styles.cardImage}>
             <Image
-              src="/images/mind-spirit-home.webp"
-              alt="Mind & Spirit — article page"
+              src="/images/catalysis-home.webp"
+              alt="Catalysis — landing page"
               width={2000}
-              height={1054}
+              height={1213}
               sizes="(max-width: 720px) 0px, 300px"
               className={styles.img}
             />

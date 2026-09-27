@@ -70,6 +70,28 @@ const PROJECTS: Project[] = [
     cta: "View Project →",
     href: "#",
   },
+  {
+    slug: "catalysis",
+    meta: "Product Design · Web & Mobile App · AI · Faith",
+    title: "Catalysis",
+    subtitle: "Grow in faith, every day.",
+    paragraphs: [
+      "A Catholic companion app for Gen Z and college Catholics, designed to make daily faith feel as natural as opening any other app.",
+      "Catalysis brings together daily scripture, a prayer guide with streaks, a community feed with prayer intentions, short-form reels, and events in one place.",
+      "Lumen, its AI assistant, answers questions from Scripture and the Catechism with citations, across a web app and a mobile app in light and dark themes.",
+    ],
+    image: "/images/catalysis-home.webp",
+    imageWidth: 2000,
+    imageHeight: 1213,
+    imageAlt: "Catalysis — landing page",
+    frameBackground:
+      "radial-gradient(70% 70% at 85% 90%, oklch(0.88 0.1 85), transparent 70%), radial-gradient(70% 70% at 10% 10%, oklch(0.82 0.11 35), transparent 70%), oklch(0.94 0.04 60)",
+    imageShadow: "0 18px 40px rgba(160,70,30,.16)",
+    accent: "#d4452b",
+    cta: "View Project →",
+    href: "#",
+    imageRight: true,
+  },
 ];
 
 export default function Work() {

@@ -1,27 +1,7 @@
 import Image from "next/image";
 import Button from "./ui/Button";
+import { projectHref, type Project } from "@/lib/projects";
 import styles from "./ProjectCard.module.css";
-
-export type Project = {
-  slug: string;
-  meta: string;
-  title: React.ReactNode;
-  subtitle: string;
-  paragraphs: React.ReactNode[];
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
-  imageAlt: string;
-  /** Background of the 4:3 image frame. */
-  frameBackground: string;
-  /** Shadow under the inset screenshot. */
-  imageShadow: string;
-  accent: string;
-  cta: string;
-  href: string;
-  /** Put the image on the right at desktop widths. */
-  imageRight?: boolean;
-};
 
 export default function ProjectCard({ project }: { project: Project }) {
   const {
@@ -37,9 +17,9 @@ export default function ProjectCard({ project }: { project: Project }) {
     imageShadow,
     accent,
     cta,
-    href,
     imageRight = false,
   } = project;
+  const href = projectHref(project);
 
   return (
     <article className={`${styles.card} ${imageRight ? styles.imageRight : ""}`}>

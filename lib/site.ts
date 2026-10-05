@@ -10,10 +10,10 @@ export const SITE_DESCRIPTION =
   "dev&dash is an independent web design and development studio creating distinctive websites, digital products, and AI-powered experiences for ambitious brands, founders, and teams.";
 
 export const NAV_LINKS = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const PROCESS_STEPS = [

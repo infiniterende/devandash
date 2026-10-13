@@ -112,7 +112,8 @@ The homepage `#shop` section sells the planner through a Stripe Payment Link (se
    `https://devanddash.com/shop/thanks?session_id={CHECKOUT_SESSION_ID}`. The placeholder is filled in by Stripe.
 2. Copy `.env.example` to `.env.local` and set `STRIPE_SECRET_KEY`. Add the same variable to the Vercel project.
 3. Put the PDF at `private/2027_Student_Career_Planner.pdf` for local development. `private/` is gitignored because this repository is public.
-4. In production, upload the PDF somewhere private and set `PRODUCT_FILE_URL` to its URL (a Vercel Blob URL works: `npx vercel blob put private/2027_Student_Career_Planner.pdf`).
+4. The PDF is stored as a private blob in the Vercel Blob store `devandash-files` (connected to the project, which provides `BLOB_READ_WRITE_TOKEN`). `PRODUCT_FILE_URL` points at it. To replace the file:
+   `npx vercel@latest blob put private/2027_Student_Career_Planner.pdf --access private --pathname products/2027_Student_Career_Planner.pdf --allow-overwrite`
 
 ### Flow
 - The Buy button opens the Payment Link. Stripe handles payment, receipts, and (if enabled in the dashboard) tax.

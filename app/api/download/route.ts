@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
+import { get as getBlob } from "@vercel/blob";
 import { getStripe } from "@/lib/stripe";
 import { getProduct, type Product } from "@/lib/products";
 
@@ -38,15 +39,23 @@ export async function GET(request: Request) {
     "Cache-Control": "private, no-store",
   };
 
-  // Production: fetch from a private URL (e.g. Vercel Blob). Development: read from private/.
+  // Production: stream from a private Vercel Blob (needs BLOB_READ_WRITE_TOKEN), or any
+  // other private URL. Development: read from private/.
   const remote = process.env.PRODUCT_FILE_URL;
   if (remote) {
-    const upstream = await fetch(remote);
-    if (!upstream.ok || !upstream.body) {
-      console.error("Product file fetch failed", upstream.status);
+    try {
+      if (process.env.BLOB_READ_WRITE_TOKEN) {
+        const blob = await getBlob(remote, { access: "private" });
+        if (!blob || !blob.stream) throw new Error("Blob not found");
+        return new Response(blob.stream, { headers });
+      }
+      const upstream = await fetch(remote);
+      if (!upstream.ok || !upstream.body) throw new Error(`Upstream ${upstream.status}`);
+      return new Response(upstream.body, { headers });
+    } catch (err) {
+      console.error("Product file fetch failed", err);
       return NextResponse.json({ error: "File temporarily unavailable." }, { status: 502 });
     }
-    return new Response(upstream.body, { headers });
   }
 
   try {

@@ -24,8 +24,8 @@ export default function Products() {
       </div>
 
       {PRODUCTS.map((product) => (
+        <div key={product.slug} className={styles.product}>
         <article
-          key={product.slug}
           className={styles.card}
           style={{ "--accent": ACCENT } as React.CSSProperties}
         >
@@ -83,6 +83,36 @@ export default function Products() {
             </div>
           </div>
         </article>
+
+        {product.pages.length > 0 && (
+          <div className={styles.inside}>
+            <div className={styles.insideHeader}>
+              <span className={styles.meta}>Inside the planner</span>
+              <p className={styles.insideLede}>
+                Every page is linked: tap a month, a week, or a section tab and the PDF
+                jumps there. A few of its 574 pages:
+              </p>
+            </div>
+            <ul className={styles.pageGrid}>
+              {product.pages.map((page) => (
+                <li key={page.src} className={styles.pageItem}>
+                  <div className={styles.pageShot}>
+                    <Image
+                      src={page.src}
+                      alt={page.caption}
+                      width={page.width}
+                      height={page.height}
+                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 420px"
+                      className={styles.img}
+                    />
+                  </div>
+                  <span className={styles.pageCaption}>{page.caption}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        </div>
       ))}
     </section>
   );

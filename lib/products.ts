@@ -13,6 +13,8 @@ export type Product = {
   priceCents: number;
   currency: "usd";
   images: { src: string; alt: string; width: number; height: number }[];
+  /** Sample pages shown in the "Inside the planner" gallery. */
+  pages: { src: string; caption: string; width: number; height: number }[];
   /** File name in `private/` (dev) and the download file name sent to buyers. */
   fileName: string;
   /** Stripe Payment Link that sells this product. */
@@ -45,6 +47,16 @@ export const PRODUCTS: Product[] = [
       { src: "/images/planner-1.webp", alt: "2027 Student & Career Planner cover", width: 2000, height: 1500 },
       { src: "/images/planner-2.webp", alt: "Planner spread", width: 2000, height: 1500 },
       { src: "/images/planner-3.webp", alt: "Planner spread", width: 2000, height: 1500 },
+    ],
+    pages: [
+      { src: "/images/planner/daily.webp", caption: "Daily page · schedule, top three, wellness", width: 1600, height: 1200 },
+      { src: "/images/planner/week.webp", caption: "Weekly spread", width: 1600, height: 1200 },
+      { src: "/images/planner/month.webp", caption: "Monthly calendar", width: 1600, height: 1200 },
+      { src: "/images/planner/grades.webp", caption: "Grade tracker with GPA", width: 1600, height: 1200 },
+      { src: "/images/planner/jobs.webp", caption: "Job application tracker", width: 1600, height: 1200 },
+      { src: "/images/planner/budget.webp", caption: "Monthly budget", width: 1600, height: 1200 },
+      { src: "/images/planner/habits.webp", caption: "Habit tracker", width: 1600, height: 1200 },
+      { src: "/images/planner/vision.webp", caption: "Vision board", width: 1600, height: 1200 },
     ],
     fileName: "2027_Student_Career_Planner.pdf",
     stripePaymentLink: "https://buy.stripe.com/aFaeVf3NkfsMcfRfyj7ok00",

@@ -6,6 +6,7 @@ import Process from "@/components/Process";
 import Approach from "@/components/Approach";
 import OneApproach from "@/components/OneApproach";
 import Capabilities from "@/components/Capabilities";
+import Products from "@/components/Products";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
@@ -21,6 +22,7 @@ export default function Page() {
       <Approach />
       <OneApproach />
       <Capabilities />
+      <Products />
       <Contact />
       <Footer />
     </main>

@@ -100,3 +100,24 @@ Title "dev&dash — Web design & development studio"; description from hero para
 ## Files
 - `design/Dev and Dash Website.dc.html` — the full design (open in a browser; copy + exact styles live here)
 - `design/support.js`, `design/image-slot.js`, `design/shots/` — needed only to view the reference
+
+---
+
+## Shop (Stripe Payment Link)
+
+The homepage `#shop` section sells the planner through a Stripe Payment Link (set in `lib/products.ts`). The PDF is delivered by `/api/download` after the Checkout session is verified with Stripe.
+
+### Setup
+1. In the Stripe dashboard, open the Payment Link → **After payment** → choose *Don't show confirmation page* and redirect to
+   `https://devanddash.com/shop/thanks?session_id={CHECKOUT_SESSION_ID}`. The placeholder is filled in by Stripe.
+2. Copy `.env.example` to `.env.local` and set `STRIPE_SECRET_KEY`. Add the same variable to the Vercel project.
+3. Put the PDF at `private/2027_Student_Career_Planner.pdf` for local development. `private/` is gitignored because this repository is public.
+4. In production, upload the PDF somewhere private and set `PRODUCT_FILE_URL` to its URL (a Vercel Blob URL works: `npx vercel blob put private/2027_Student_Career_Planner.pdf`).
+
+### Flow
+- The Buy button opens the Payment Link. Stripe handles payment, receipts, and (if enabled in the dashboard) tax.
+- Stripe redirects to `/shop/thanks?session_id=…`, which verifies the session is paid and shows a Download button. The page keeps working as a re-download link.
+- `GET /api/download?session_id=…` re-verifies the session and streams the PDF.
+
+### Testing
+Payment Links are live-mode only unless created in test mode. To test the download flow without charging a card, create a test-mode Payment Link for the same product, point it at the same redirect URL, and use card `4242 4242 4242 4242` with a `sk_test_…` key locally.

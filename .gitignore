@@ -5,3 +5,10 @@ out
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Product files for local development (served by /api/download). Never commit.
+private/
+
+# Local env
+.env*.local
+.env

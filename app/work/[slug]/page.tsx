@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Tag from "@/components/ui/Tag";
 import Button from "@/components/ui/Button";
 import Halftone from "@/components/ui/Halftone";
+import Cinematic from "@/components/motion/Cinematic";
 import { PROJECTS, getProject, projectHref } from "@/lib/projects";
 import { SITE_URL } from "@/lib/site";
 import pageStyles from "@/app/page.module.css";
@@ -64,6 +65,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
           mask="radial-gradient(38% 42% at 12% 70%, #000, transparent 70%), radial-gradient(34% 40% at 90% 60%, #000, transparent 70%)"
           opacity={0.7}
         />
+        <Cinematic grain={0.1} vignette={0.28} />
         <Nav active="/#work" />
         <div className={styles.headerBody}>
           <Link href="/#work" className={styles.back}>

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Tag from "./ui/Tag";
+import Reveal from "./motion/Reveal";
+import Link from "next/link";
 import Button from "./ui/Button";
 import { PRODUCTS, formatPrice } from "@/lib/products";
 import styles from "./Products.module.css";
@@ -9,7 +11,7 @@ const ACCENT = "#9a7a3c";
 export default function Products() {
   return (
     <section id="shop" className={styles.shop}>
-      <div className={styles.header}>
+      <Reveal className={styles.header}>
         <div className={styles.headline}>
           <Tag>Shop</Tag>
           <h2 className={styles.h2}>
@@ -21,11 +23,11 @@ export default function Products() {
         <p className={styles.lede}>
           Digital products from the studio: designed, built, and delivered instantly.
         </p>
-      </div>
+      </Reveal>
 
       {PRODUCTS.map((product) => (
         <div key={product.slug} className={styles.product}>
-        <article
+        <Reveal as="article"
           className={styles.card}
           style={{ "--accent": ACCENT } as React.CSSProperties}
         >
@@ -61,7 +63,11 @@ export default function Products() {
           <div className={styles.text}>
             <span className={styles.meta}>{product.format}</span>
             <div className={styles.titles}>
-              <h3 className={styles.h3}>{product.name}</h3>
+              <h3 className={styles.h3}>
+                <Link href={`/shop/${product.slug}`} className={styles.titleLink}>
+                  {product.name}
+                </Link>
+              </h3>
               <h4 className={styles.h4} style={{ color: ACCENT }}>
                 {product.tagline}
               </h4>
@@ -80,38 +86,13 @@ export default function Products() {
                 Buy now →
               </Button>
               <span className={styles.note}>Secure checkout by Stripe · Instant PDF download</span>
+              <Link href={`/shop/${product.slug}`} className={styles.detailsLink}>
+                See everything inside →
+              </Link>
             </div>
           </div>
-        </article>
+        </Reveal>
 
-        {product.pages.length > 0 && (
-          <div className={styles.inside}>
-            <div className={styles.insideHeader}>
-              <span className={styles.meta}>Inside the planner</span>
-              <p className={styles.insideLede}>
-                Every page is linked: tap a month, a week, or a section tab and the PDF
-                jumps there. A few of its 574 pages:
-              </p>
-            </div>
-            <ul className={styles.pageGrid}>
-              {product.pages.map((page) => (
-                <li key={page.src} className={styles.pageItem}>
-                  <div className={styles.pageShot}>
-                    <Image
-                      src={page.src}
-                      alt={page.caption}
-                      width={page.width}
-                      height={page.height}
-                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 420px"
-                      className={styles.img}
-                    />
-                  </div>
-                  <span className={styles.pageCaption}>{page.caption}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
         </div>
       ))}
     </section>

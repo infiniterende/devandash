@@ -148,3 +148,90 @@
   color: var(--body);
   text-wrap: pretty;
 }
+
+/* ---------- Scroll-driven (pinned) variant ---------- */
+.processPinned {
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 0;
+}
+
+.pin {
+  position: relative;
+}
+
+.viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.panelScroll {
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.pipsFloating {
+  position: absolute;
+  top: clamp(24px, 4vw, 48px);
+  right: clamp(24px, 4vw, 48px);
+  z-index: 2;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: clamp(24px, 4vw, 48px);
+  /* --d is the slide's distance from the active position, -1..1 */
+  opacity: calc(1 - abs(var(--d, 0)) * 0.6);
+}
+
+.slide .bigNum {
+  display: inline-block;
+  transform: translate3d(calc(var(--d, 0) * 60px), 0, 0);
+  will-change: transform;
+}
+
+.slide .detail {
+  transform: perspective(1200px) translate3d(calc(var(--d, 0) * -30px), 0, 0) rotateY(calc(var(--d, 0) * -6deg));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.scrollHint {
+  position: absolute;
+  right: clamp(24px, 4vw, 48px);
+  bottom: clamp(20px, 3vw, 32px);
+  font: 500 11px/1 var(--font-mono);
+  color: rgba(28, 26, 43, 0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: hint 2.4s ease-in-out infinite;
+}
+
+@keyframes hint {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}

@@ -3,6 +3,8 @@ import Nav from "./Nav";
 import Tag from "./ui/Tag";
 import Button from "./ui/Button";
 import Halftone from "./ui/Halftone";
+import Cinematic from "./motion/Cinematic";
+import PointerParallax from "./motion/PointerParallax";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -12,8 +14,10 @@ export default function Hero() {
         mask="radial-gradient(38% 42% at 12% 70%, #000, transparent 70%), radial-gradient(34% 40% at 90% 60%, #000, transparent 70%)"
         opacity={0.7}
       />
+      <Cinematic grain={0.1} vignette={0.28} />
       <Nav />
 
+      <PointerParallax className={styles.inner}>
       <div id="top" className={styles.center}>
         <Tag onGradient>Strategy. Design. Development.</Tag>
         <h1 className={styles.h1}>We design digital experiences people remember.</h1>
@@ -94,6 +98,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      </PointerParallax>
 
       <div className={styles.fade} />
     </section>

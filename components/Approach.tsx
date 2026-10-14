@@ -1,5 +1,7 @@
 import Tag from "./ui/Tag";
 import Halftone from "./ui/Halftone";
+import Cinematic from "./motion/Cinematic";
+import Reveal from "./motion/Reveal";
 import styles from "./Approach.module.css";
 
 export default function Approach() {
@@ -9,16 +11,17 @@ export default function Approach() {
         mask="radial-gradient(30% 40% at 8% 85%, #000, transparent 70%), radial-gradient(30% 40% at 95% 20%, #000, transparent 70%)"
         opacity={0.8}
       />
-      <div className={styles.header}>
+      <Cinematic grain={0.08} vignette={0.22} />
+      <Reveal className={styles.header}>
         <Tag onGradient className={styles.tag}>
           Not just pretty websites.
         </Tag>
         <h2 className={styles.h2}>
           Digital products should be beautiful <em className={styles.em}>and</em> useful.
         </h2>
-      </div>
+      </Reveal>
 
-      <div className={styles.glass}>
+      <Reveal className={styles.glass} delay={120}>
         <div className={styles.quoteCard}>
           <span className={styles.brand}>dev&amp;dash</span>
           <p className={styles.quote}>
@@ -37,7 +40,7 @@ export default function Approach() {
             and interaction — while engineering the systems they don&apos;t.
           </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

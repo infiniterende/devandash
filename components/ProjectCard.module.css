@@ -11,6 +11,8 @@
 
 .frame {
   position: relative;
+  transform: translate3d(var(--shift, 0px), 0, 0);
+  transition: transform 0.15s linear;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
   padding: clamp(18px, 3vw, 36px);
@@ -39,6 +41,8 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  transform: translate3d(calc(var(--shift, 0px) * -0.5), 0, 0);
+  transition: transform 0.15s linear;
   padding: clamp(8px, 2vw, 24px) clamp(8px, 2vw, 32px) clamp(8px, 2vw, 24px) 0;
 }
 

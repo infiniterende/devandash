@@ -1,4 +1,5 @@
 import Tag from "./ui/Tag";
+import Reveal from "./motion/Reveal";
 import styles from "./Services.module.css";
 
 const SERVICES = [
@@ -75,7 +76,7 @@ const SERVICES = [
 export default function Services() {
   return (
     <section id="services" className={styles.services}>
-      <div className={styles.header}>
+      <Reveal className={styles.header}>
         <div className={styles.headline}>
           <Tag>What We Do</Tag>
           <h2 className={styles.h2}>
@@ -88,11 +89,11 @@ export default function Services() {
           dev&amp;dash works across the entire digital product lifecycle — from the first
           idea to production.
         </p>
-      </div>
+      </Reveal>
 
       <div className={styles.grid}>
-        {SERVICES.map((s) => (
-          <div key={s.index} className={styles.card}>
+        {SERVICES.map((s, i) => (
+          <Reveal key={s.index} delay={i * 90} className={styles.card}>
             <div className={styles.cardHeader} style={{ background: s.background }}>
               <span className={styles.index} style={{ color: s.indexColor }}>
                 {s.index}
@@ -109,7 +110,7 @@ export default function Services() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

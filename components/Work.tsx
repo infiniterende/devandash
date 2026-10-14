@@ -1,12 +1,13 @@
 import Tag from "./ui/Tag";
-import ProjectCard from "./ProjectCard";
+import HorizontalWork from "./HorizontalWork";
+import Reveal from "./motion/Reveal";
 import { PROJECTS } from "@/lib/projects";
 import styles from "./Work.module.css";
 
 export default function Work() {
   return (
     <section id="work" className={styles.work}>
-      <div className={styles.header}>
+      <Reveal className={styles.header}>
         <div className={styles.headline}>
           <Tag>Selected Work</Tag>
           <h2 className={styles.h2}>Ideas, designed and built.</h2>
@@ -22,11 +23,9 @@ export default function Work() {
             Then we design and engineer everything around the answer.
           </p>
         </div>
-      </div>
+      </Reveal>
 
-      {PROJECTS.map((project) => (
-        <ProjectCard key={project.slug} project={project} />
-      ))}
+      <HorizontalWork projects={PROJECTS} />
     </section>
   );
 }

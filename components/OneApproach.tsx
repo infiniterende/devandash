@@ -1,3 +1,4 @@
+import Reveal from "./motion/Reveal";
 import styles from "./OneApproach.module.css";
 
 const PRODUCTS = [
@@ -26,18 +27,20 @@ const PRODUCTS = [
 export default function OneApproach() {
   return (
     <section className={styles.section} aria-label="One approach">
+      <Reveal>
       <h2 className={styles.h2}>
         Four very different products.
         <br />
         <span className={styles.faint}>One approach.</span>
       </h2>
+      </Reveal>
       <div className={styles.grid}>
-        {PRODUCTS.map((p) => (
-          <div key={p.name} className={styles.card}>
+        {PRODUCTS.map((p, i) => (
+          <Reveal key={p.name} delay={i * 90} className={styles.card}>
             <span className={styles.orb} style={{ background: p.orb }} />
             <h3 className={styles.name}>{p.name}</h3>
             <p className={styles.line}>{p.line}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
       <div className={styles.closing}>

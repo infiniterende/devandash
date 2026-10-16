@@ -62,12 +62,32 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transform: translate3d(var(--shift, 0px), 0, 0);
+  transition: transform 0.15s linear;
   border-radius: 20px;
   padding: clamp(18px, 3vw, 36px);
   background:
     radial-gradient(70% 70% at 85% 90%, oklch(0.88 0.08 85), transparent 70%),
     radial-gradient(70% 70% at 10% 10%, oklch(0.86 0.05 60), transparent 70%),
     oklch(0.94 0.02 80);
+}
+
+/* Portrait products (books, journals): cover and two spreads side by side, bottom-aligned. */
+.galleryPortrait {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  align-items: end;
+  align-self: stretch;
+  align-content: center;
+}
+
+.galleryPortrait .thumbs {
+  display: contents;
+}
+
+.galleryPortrait .cover,
+.galleryPortrait .thumb {
+  box-shadow: 0 14px 30px rgba(70, 50, 20, 0.16);
 }
 
 .cover,
@@ -98,6 +118,8 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  transform: translate3d(calc(var(--shift, 0px) * -0.5), 0, 0);
+  transition: transform 0.15s linear;
   padding: clamp(8px, 2vw, 24px) clamp(8px, 2vw, 32px) clamp(8px, 2vw, 24px) 0;
 }
 
@@ -175,10 +197,20 @@
   letter-spacing: -0.02em;
 }
 
-.product {
+.stack {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 40px;
+}
+
+.soon {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--hairline);
+  font: 500 12px/1 var(--font-mono);
+  color: var(--faint);
 }
 
 .titleLink {

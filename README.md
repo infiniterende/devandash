@@ -105,14 +105,16 @@ Title "dev&dash — Web design & development studio"; description from hero para
 
 ## Shop (Stripe Payment Link)
 
-The homepage `#shop` section sells the planner through a Stripe Payment Link (set in `lib/products.ts`). The PDF is delivered by `/api/download` after the Checkout session is verified with Stripe.
+The homepage `#shop` section sells digital products through Stripe Payment Links (one per product in `lib/products.ts`). Each file is delivered by `/api/download` after the Checkout session is verified with Stripe.
+
+Adding a product: add an entry to `PRODUCTS` with its public `stripePaymentLink` (buy.stripe.com/…), the Payment Link id (`stripePaymentLinkId`, plink_…) and the product name as it appears in Stripe (`stripeProductNames`); the download page uses these to work out which file a session bought. Give it a `fileUrlEnv` and set that variable to the file's private Blob URL.
 
 ### Setup
 1. In the Stripe dashboard, open the Payment Link → **After payment** → choose *Don't show confirmation page* and redirect to
    `https://devanddash.com/shop/thanks?session_id={CHECKOUT_SESSION_ID}`. The placeholder is filled in by Stripe.
-2. Copy `.env.example` to `.env.local` and set `STRIPE_SECRET_KEY`. Add the same variable to the Vercel project.
+2. Copy `.env.example` to `.env.local` and set `STRIPE_SECRET_KEY`. Add the same variable to the Vercel project. Point every Payment Link's after-payment redirect at the same `/shop/thanks` URL.
 3. Put the PDF at `private/2027_Student_Career_Planner.pdf` for local development. `private/` is gitignored because this repository is public.
-4. The PDF is stored as a private blob in the Vercel Blob store `devandash-files` (connected to the project, which provides `BLOB_READ_WRITE_TOKEN`). `PRODUCT_FILE_URL` points at it. To replace the file:
+4. Files are stored as private blobs in the Vercel Blob store `devandash-files` (connected to the project, which provides `BLOB_READ_WRITE_TOKEN`). `PRODUCT_FILE_URL` (planner) and `PRODUCT_FILE_URL_DEVOTIONAL` point at them. To replace a file:
    `npx vercel@latest blob put private/2027_Student_Career_Planner.pdf --access private --pathname products/2027_Student_Career_Planner.pdf --allow-overwrite`
 
 ### Flow

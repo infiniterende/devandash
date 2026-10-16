@@ -43,8 +43,15 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   const product = getProduct(slug);
   if (!product) notFound();
 
-  const price = formatPrice(product);
+  const onSale = product.stripePaymentLink.length > 0 && product.priceCents > 0;
+  const price = onSale ? formatPrice(product) : "Coming soon";
   const accentVars = { "--accent": ACCENT } as React.CSSProperties;
+  // Gallery: cover spreads first, then sample pages, without repeating an image.
+  const seen = new Set<string>();
+  const galleryItems = [
+    ...product.images.slice(1),
+    ...product.pages.map((p) => ({ src: p.src, alt: p.caption, width: p.width, height: p.height })),
+  ].filter((img) => (seen.has(img.src) ? false : (seen.add(img.src), true)));
 
   return (
     <main className={pageStyles.page} style={accentVars}>
@@ -64,9 +71,11 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           <h1 className={styles.h1}>{product.name}</h1>
           <p className={styles.summary}>{product.summary}</p>
           <div className={styles.headerActions}>
-            <Button href={product.stripePaymentLink} variant="light">
-              Buy now · {price}
-            </Button>
+            {onSale && (
+              <Button href={product.stripePaymentLink} variant="light">
+                Buy now · {price}
+              </Button>
+            )}
             <a href="#inside" className={styles.ghost}>
               See what&apos;s inside
             </a>
@@ -77,7 +86,10 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       {/* Cover card overlapping the header */}
       <div className={styles.coverCard}>
         <div className={styles.coverFrame}>
-          <div className={styles.coverShot}>
+          <div
+            className={styles.coverShot}
+            style={product.images[0].height > product.images[0].width ? { maxWidth: 520 } : undefined}
+          >
             <Image
               src={product.images[0].src}
               alt={product.images[0].alt}
@@ -109,10 +121,14 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <aside className={styles.buyPanel} aria-label="Purchase">
           <span className={styles.panelPrice}>{price}</span>
           <span className={styles.panelMeta}>{product.format}</span>
-          <Button href={product.stripePaymentLink} variant="dark" hoverColor={ACCENT}>
-            Buy now →
-          </Button>
-          <span className={styles.panelNote}>Secure checkout by Stripe · Instant PDF download</span>
+          {onSale && (
+            <>
+              <Button href={product.stripePaymentLink} variant="dark" hoverColor={ACCENT}>
+                Buy now →
+              </Button>
+              <span className={styles.panelNote}>Secure checkout by Stripe · Instant PDF download</span>
+            </>
+          )}
           <dl className={styles.specs}>
             {product.specs.map((s) => (
               <div key={s.label} className={styles.specRow}>
@@ -129,9 +145,9 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         <div className={styles.insideHeader}>
           <Tag>What&apos;s inside</Tag>
           <h2 className={styles.h2Big}>
-            Ten sections. One tap between them.
+            {product.insideTitle[0]}
             <br />
-            <span className={styles.faint}>574 pages, all linked.</span>
+            <span className={styles.faint}>{product.insideTitle[1]}</span>
           </h2>
         </div>
         <div className={styles.sectionList}>
@@ -144,8 +160,8 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
                 <Image
                   src={sec.image}
                   alt={sec.caption}
-                  width={1600}
-                  height={1200}
+                  width={sec.imageWidth}
+                  height={sec.imageHeight}
                   sizes="(max-width: 940px) 100vw, 640px"
                   className={styles.img}
                 />
@@ -170,16 +186,14 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           <h2 className={styles.h2Big}>A closer look.</h2>
         </div>
         <ul className={styles.pageGrid}>
-          {[...product.images.slice(1), ...product.pages.map((p) => ({ src: p.src, alt: p.caption, width: p.width, height: p.height }))].map(
-            (img) => (
-              <li key={img.src} className={styles.pageItem}>
-                <div className={styles.pageShot}>
-                  <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 420px" className={styles.img} />
-                </div>
-                <span className={styles.pageCaption}>{img.alt}</span>
-              </li>
-            ),
-          )}
+          {galleryItems.map((img) => (
+            <li key={img.src} className={styles.pageItem}>
+              <div className={styles.pageShot}>
+                <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 420px" className={styles.img} />
+              </div>
+              <span className={styles.pageCaption}>{img.alt}</span>
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -196,17 +210,21 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         </div>
         <div className={styles.ctaCard}>
           <span className={styles.panelPrice}>{price}</span>
-          <p className={styles.ctaText}>Plan intentionally. Study effectively. Build your future.</p>
-          <Button href={product.stripePaymentLink} variant="dark" hoverColor={ACCENT}>
-            Buy the planner →
-          </Button>
-          <span className={styles.panelNote}>
-            Prefer Payhip?{" "}
-            <a href={product.payhipUrl} target="_blank" rel="noopener noreferrer">
-              Buy it there instead
-            </a>
-            .
-          </span>
+          <p className={styles.ctaText}>{product.tagline}</p>
+          {onSale && (
+            <Button href={product.stripePaymentLink} variant="dark" hoverColor={ACCENT}>
+              Buy now →
+            </Button>
+          )}
+          {product.payhipUrl && (
+            <span className={styles.panelNote}>
+              Prefer Payhip?{" "}
+              <a href={product.payhipUrl} target="_blank" rel="noopener noreferrer">
+                Buy it there instead
+              </a>
+              .
+            </span>
+          )}
         </div>
       </section>
 

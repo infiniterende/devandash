@@ -5,8 +5,7 @@ import Footer from "@/components/Footer";
 import Tag from "@/components/ui/Tag";
 import Button from "@/components/ui/Button";
 import Halftone from "@/components/ui/Halftone";
-import { getStripe } from "@/lib/stripe";
-import { getProduct } from "@/lib/products";
+import { resolvePurchase } from "@/lib/stripe";
 import pageStyles from "@/app/page.module.css";
 import styles from "./thanks.module.css";
 
@@ -26,13 +25,12 @@ type Status =
 async function lookup(sessionId: string | undefined): Promise<Status> {
   if (!sessionId || !sessionId.startsWith("cs_")) return { kind: "missing" };
   try {
-    const session = await getStripe().checkout.sessions.retrieve(sessionId);
-    if (session.payment_status !== "paid") return { kind: "unpaid" };
-    const product = getProduct(session.metadata?.productSlug ?? "");
+    const purchase = await resolvePurchase(sessionId);
+    if (!purchase.paid) return { kind: "unpaid" };
     return {
       kind: "paid",
-      productName: product?.name ?? "your purchase",
-      email: session.customer_details?.email ?? null,
+      productName: purchase.product?.name ?? "your purchase",
+      email: purchase.email,
       sessionId,
     };
   } catch (err) {
@@ -61,7 +59,7 @@ export default async function ThanksPage({
           {status.kind === "paid" ? (
             <>
               <Tag>Order confirmed</Tag>
-              <h1 className={styles.h1}>Thank you. Your planner is ready.</h1>
+              <h1 className={styles.h1}>Thank you. Your download is ready.</h1>
               <p className={styles.text}>
                 {status.email
                   ? `A receipt from Stripe is on its way to ${status.email}.`

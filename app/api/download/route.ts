@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { get as getBlob } from "@vercel/blob";
-import { getStripe } from "@/lib/stripe";
-import { getProduct, type Product } from "@/lib/products";
+import { resolvePurchase } from "@/lib/stripe";
+import type { Product } from "@/lib/products";
 
 export const runtime = "nodejs";
 
@@ -20,11 +20,11 @@ export async function GET(request: Request) {
 
   let product: Product | undefined;
   try {
-    const session = await getStripe().checkout.sessions.retrieve(sessionId);
-    if (session.payment_status !== "paid") {
+    const purchase = await resolvePurchase(sessionId);
+    if (!purchase.paid) {
       return NextResponse.json({ error: "Payment not completed." }, { status: 402 });
     }
-    product = getProduct(session.metadata?.productSlug ?? "");
+    product = purchase.product;
   } catch (err) {
     console.error("Download verification failed", err);
     return NextResponse.json({ error: "Could not verify this purchase." }, { status: 403 });
@@ -39,9 +39,9 @@ export async function GET(request: Request) {
     "Cache-Control": "private, no-store",
   };
 
-  // Production: stream from a private Vercel Blob (needs BLOB_READ_WRITE_TOKEN), or any
-  // other private URL. Development: read from private/.
-  const remote = process.env.PRODUCT_FILE_URL;
+  // Production: stream from the product's private Vercel Blob (needs BLOB_READ_WRITE_TOKEN),
+  // or any other private URL named by the product's fileUrlEnv. Development: read from private/.
+  const remote = process.env[product.fileUrlEnv];
   if (remote) {
     try {
       if (process.env.BLOB_READ_WRITE_TOKEN) {
@@ -62,7 +62,7 @@ export async function GET(request: Request) {
     const file = await readFile(path.join(process.cwd(), "private", product.fileName));
     return new Response(file, { headers });
   } catch {
-    console.error("Product file missing: set PRODUCT_FILE_URL or add private/" + product.fileName);
+    console.error(`Product file missing: set ${product.fileUrlEnv} or add private/${product.fileName}`);
     return NextResponse.json({ error: "File temporarily unavailable." }, { status: 502 });
   }
 }
